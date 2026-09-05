@@ -1,0 +1,28 @@
+{
+  "submissions": {
+    "sub_dgfPB-kkI0": {
+      "id": "sub_dgfPB-kkI0",
+      "contributorName": "Friend on Phone",
+      "letterContent": "Happy Birthday! Wishing you an unforgettable year ahead filled with adventures and laughter!",
+      "wordCount": 13,
+      "status": "pending",
+      "createdAt": "2026-09-05T16:30:47.466Z",
+      "updatedAt": "2026-09-05T16:30:47.466Z"
+    }
+  },
+  "images": {
+    "img_GsF1a2i27F": {
+      "id": "img_GsF1a2i27F",
+      "originalFilename": "test_dummy.png",
+      "storagePath": "/uploads/img_TZKv0jfuhq4C.webp",
+      "filePath": "D:\\birthday\\public\\uploads\\img_TZKv0jfuhq4C.webp",
+      "width": 1,
+      "height": 1,
+      "aspectRatio": 1,
+      "sizeBytes": 98,
+      "submissionId": "sub_dgfPB-kkI0",
+      "createdAt": "2026-09-05T16:30:47.466Z"
+    }
+  },
+  "generatedLetters": {}
+}

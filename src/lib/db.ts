@@ -12,8 +12,36 @@ import {
 } from '@/types';
 import { deleteStoredImage } from './image-processor';
 
-const DATA_DIR = path.join(process.cwd(), 'data');
-const DB_FILE = path.join(DATA_DIR, 'birthday_database.json');
+// Determine the best writable data directory
+function getDataDir(): string {
+  if (process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME || process.env.NODE_ENV === 'production') {
+    const tmpDir = path.join('/tmp', 'birthday_data');
+    if (!fs.existsSync(tmpDir)) {
+      try {
+        fs.mkdirSync(tmpDir, { recursive: true });
+      } catch {
+        // Handled
+      }
+    }
+    return tmpDir;
+  }
+
+  const localDir = path.join(process.cwd(), 'data');
+  if (!fs.existsSync(localDir)) {
+    try {
+      fs.mkdirSync(localDir, { recursive: true });
+    } catch {
+      const fallbackDir = path.join('/tmp', 'birthday_data');
+      fs.mkdirSync(fallbackDir, { recursive: true });
+      return fallbackDir;
+    }
+  }
+  return localDir;
+}
+
+function getDbFilePath(): string {
+  return path.join(getDataDir(), 'birthday_database.json');
+}
 
 interface DatabaseSchema {
   submissions: Record<string, Omit<Submission, 'images' | 'generatedLetter'>>;
@@ -27,37 +55,51 @@ const DEFAULT_DB: DatabaseSchema = {
   generatedLetters: {},
 };
 
-function ensureDataDir() {
-  if (!fs.existsSync(DATA_DIR)) {
-    fs.mkdirSync(DATA_DIR, { recursive: true });
-  }
-}
+// In-memory cache for fast serverless execution
+let memoryDb: DatabaseSchema | null = null;
 
 function readDb(): DatabaseSchema {
-  ensureDataDir();
-  if (!fs.existsSync(DB_FILE)) {
+  if (memoryDb) return memoryDb;
+
+  const dbFile = getDbFilePath();
+  if (!fs.existsSync(dbFile)) {
     writeDb(DEFAULT_DB);
     return DEFAULT_DB;
   }
   try {
-    const raw = fs.readFileSync(DB_FILE, 'utf-8');
-    return JSON.parse(raw);
+    const raw = fs.readFileSync(dbFile, 'utf-8');
+    memoryDb = JSON.parse(raw);
+    return memoryDb!;
   } catch {
     return DEFAULT_DB;
   }
 }
 
 function writeDb(data: DatabaseSchema): void {
-  ensureDataDir();
-  const tmpFile = `${DB_FILE}.${Date.now()}.tmp`;
-  fs.writeFileSync(tmpFile, JSON.stringify(data, null, 2), 'utf-8');
-  fs.renameSync(tmpFile, DB_FILE);
+  memoryDb = data;
+  const dbFile = getDbFilePath();
+  try {
+    const tmpFile = `${dbFile}.${Date.now()}.tmp`;
+    fs.writeFileSync(tmpFile, JSON.stringify(data, null, 2), 'utf-8');
+    fs.renameSync(tmpFile, dbFile);
+  } catch (err) {
+    console.warn('Could not write database to disk:', err);
+  }
 }
 
 // Helper: Count words in a string
 export function countWords(text: string): number {
   if (!text) return 0;
   return text.trim().split(/\s+/).filter(Boolean).length;
+}
+
+// Helper: Get image by filename
+export function getImageByFilename(filename: string): SubmissionImage | null {
+  const db = readDb();
+  const found = Object.values(db.images).find((img) =>
+    img.storagePath.endsWith(filename)
+  );
+  return found || null;
 }
 
 // 1. Get all submissions (for Admin)

@@ -5,6 +5,7 @@ export interface SubmissionImage {
   submissionId: string;
   originalFilename: string;
   storagePath: string; // e.g. "/uploads/img_xxx.webp"
+  dataUrl?: string; // Base64 backup for serverless persistence
   width: number;
   height: number;
   aspectRatio: number; // width / height

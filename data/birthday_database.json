@@ -8,6 +8,16 @@
       "status": "pending",
       "createdAt": "2026-09-05T16:30:47.466Z",
       "updatedAt": "2026-09-05T16:30:47.466Z"
+    },
+    "sub_e2gCwVqcfH": {
+      "id": "sub_e2gCwVqcfH",
+      "contributorName": "Arun Kumar",
+      "letterContent": "Happy 30th Birthday to the most amazing friend! May this milestone year bring you boundless happiness, endless adventures, and unforgettable memories. Grateful for all the laughter and good times we have shared together!",
+      "wordCount": 33,
+      "status": "published",
+      "createdAt": "2026-09-05T17:19:54.597Z",
+      "updatedAt": "2026-09-05T17:19:54.746Z",
+      "publishedAt": "2026-09-05T17:19:54.746Z"
     }
   },
   "images": {
@@ -22,7 +32,213 @@
       "sizeBytes": 98,
       "submissionId": "sub_dgfPB-kkI0",
       "createdAt": "2026-09-05T16:30:47.466Z"
+    },
+    "img_iHuERbY1Ic": {
+      "id": "img_iHuERbY1Ic",
+      "originalFilename": "photo1.png",
+      "storagePath": "/uploads/img_IcT8NzFDL0ji.webp",
+      "filePath": "D:\\birthday\\public\\uploads\\img_IcT8NzFDL0ji.webp",
+      "width": 1,
+      "height": 1,
+      "aspectRatio": 1,
+      "sizeBytes": 98,
+      "submissionId": "sub_e2gCwVqcfH",
+      "createdAt": "2026-09-05T17:19:54.597Z"
+    },
+    "img_ZLwowVZBLH": {
+      "id": "img_ZLwowVZBLH",
+      "originalFilename": "photo2.png",
+      "storagePath": "/uploads/img_Jl4qKh-fpaJ_.webp",
+      "filePath": "D:\\birthday\\public\\uploads\\img_Jl4qKh-fpaJ_.webp",
+      "width": 1,
+      "height": 1,
+      "aspectRatio": 1,
+      "sizeBytes": 98,
+      "submissionId": "sub_e2gCwVqcfH",
+      "createdAt": "2026-09-05T17:19:54.597Z"
+    },
+    "img_duzbHl7vE0": {
+      "id": "img_duzbHl7vE0",
+      "originalFilename": "photo3.png",
+      "storagePath": "/uploads/img_5754WbZuflQk.webp",
+      "filePath": "D:\\birthday\\public\\uploads\\img_5754WbZuflQk.webp",
+      "width": 1,
+      "height": 1,
+      "aspectRatio": 1,
+      "sizeBytes": 98,
+      "submissionId": "sub_e2gCwVqcfH",
+      "createdAt": "2026-09-05T17:19:54.597Z"
     }
   },
-  "generatedLetters": {}
+  "generatedLetters": {
+    "let_4pWdB8KTHXKw": {
+      "id": "let_4pWdB8KTHXKw",
+      "submissionId": "sub_e2gCwVqcfH",
+      "themeId": "vintage-scrapbook",
+      "layoutConfig": {
+        "seed": 42819,
+        "themeId": "vintage-scrapbook",
+        "theme": {
+          "id": "vintage-scrapbook",
+          "name": "Vintage Memory Scrapbook",
+          "description": "Warm aged parchment, rustic kraft tape, antique postal stamps, and nostalgic warmth.",
+          "bgGradient": "bg-gradient-to-br from-[#f6efe2] via-[#eddcc4] to-[#e4cbab]",
+          "bgPattern": "grain",
+          "ambientParticles": "sparkles",
+          "cardPaperStyle": "antique-parchment",
+          "accentColor": "#8c593b",
+          "fontClassHeading": "font-script text-[#5a3a29]",
+          "fontClassBody": "font-serif text-[#3e2c22]",
+          "tapeStyleDefault": "kraft",
+          "stampLabels": [
+            "AIR MAIL",
+            "SPECIAL DELIVERY",
+            "BIRTHDAY EDITION",
+            "WITH LOVE",
+            "MEMORIES 1990s"
+          ],
+          "stickers": [
+            "💌",
+            "✨",
+            "🎂",
+            "🕯️",
+            "🕊️",
+            "📜",
+            "🎞️",
+            "🕰️"
+          ]
+        },
+        "photos": [
+          {
+            "imageId": "img_iHuERbY1Ic",
+            "imageUrl": "/uploads/img_IcT8NzFDL0ji.webp",
+            "rotationDeg": -3.338649299927056,
+            "zone": "top-left",
+            "desktopPos": {
+              "leftPct": 4,
+              "topPct": 6,
+              "widthPx": 230,
+              "zIndex": 10
+            },
+            "mobileOrder": 1,
+            "mobileRotationDeg": -3,
+            "tapeStyle": "kraft",
+            "tapePosition": "top-left",
+            "pinStyle": "gold-pin",
+            "stickerEmoji": "💌"
+          },
+          {
+            "imageId": "img_ZLwowVZBLH",
+            "imageUrl": "/uploads/img_Jl4qKh-fpaJ_.webp",
+            "rotationDeg": 4.246174863073975,
+            "zone": "top-right",
+            "desktopPos": {
+              "rightPct": 4,
+              "topPct": 8,
+              "widthPx": 230,
+              "zIndex": 10
+            },
+            "mobileOrder": 2,
+            "mobileRotationDeg": 3,
+            "tapeStyle": "pink-washi",
+            "tapePosition": "top-right",
+            "pinStyle": "silver-pin",
+            "stickerEmoji": "✨"
+          },
+          {
+            "imageId": "img_duzbHl7vE0",
+            "imageUrl": "/uploads/img_5754WbZuflQk.webp",
+            "rotationDeg": 1.0298327752389014,
+            "zone": "bottom-left",
+            "desktopPos": {
+              "leftPct": 6,
+              "bottomPct": 8,
+              "widthPx": 230,
+              "zIndex": 10
+            },
+            "mobileOrder": 3,
+            "mobileRotationDeg": 2,
+            "tapeStyle": "kraft",
+            "tapePosition": "double-corner",
+            "pinStyle": "rose-gold-clip",
+            "stickerEmoji": "🎂"
+          }
+        ],
+        "letterCard": {
+          "rotationDeg": 0.6055374564602971,
+          "paperStyle": "antique-parchment",
+          "waxSeal": {
+            "show": true,
+            "emoji": "💌",
+            "label": "SEAL OF LOVE"
+          },
+          "postageStamp": {
+            "show": true,
+            "location": "top-right",
+            "label": "MEMORIES 1990s",
+            "date": "Sep 5"
+          }
+        },
+        "decorations": [
+          {
+            "id": "dec-stamp-1",
+            "type": "stamp",
+            "content": "AIR MAIL",
+            "desktopPos": {
+              "leftPct": 24,
+              "topPct": 4,
+              "zIndex": 5
+            },
+            "rotationDeg": -9.637762322556227,
+            "scale": 0.95,
+            "opacity": 0.85
+          },
+          {
+            "id": "dec-sticker-1",
+            "type": "sticker",
+            "content": "✨",
+            "desktopPos": {
+              "rightPct": 24,
+              "topPct": 6,
+              "zIndex": 15
+            },
+            "rotationDeg": 16.81075822096318,
+            "scale": 1.2,
+            "opacity": 0.95
+          },
+          {
+            "id": "dec-sticker-2",
+            "type": "heart",
+            "content": "💖",
+            "desktopPos": {
+              "leftPct": 26,
+              "bottomPct": 8,
+              "zIndex": 15
+            },
+            "rotationDeg": -6.249257227405906,
+            "scale": 1.1,
+            "opacity": 0.9
+          },
+          {
+            "id": "dec-sticker-3",
+            "type": "cake",
+            "content": "🎂",
+            "desktopPos": {
+              "rightPct": 26,
+              "bottomPct": 7,
+              "zIndex": 15
+            },
+            "rotationDeg": 16.752619959414005,
+            "scale": 1.15,
+            "opacity": 0.9
+          }
+        ],
+        "generatedAt": "2026-09-05T17:19:54.727Z"
+      },
+      "published": true,
+      "publishedAt": "2026-09-05T17:19:54.746Z",
+      "createdAt": "2026-09-05T17:19:54.729Z",
+      "updatedAt": "2026-09-05T17:19:54.746Z"
+    }
+  }
 }

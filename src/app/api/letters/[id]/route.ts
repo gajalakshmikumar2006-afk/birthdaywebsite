@@ -4,8 +4,12 @@ import { getPublicLetterDetail } from '@/lib/db';
 export const dynamic = 'force-dynamic';
 
 function getBaseUrl(request: NextRequest): string {
-  if (process.env.NEXT_PUBLIC_APP_URL) {
-    return process.env.NEXT_PUBLIC_APP_URL.replace(/\/$/, '');
+  const customUrl = process.env.APP_URL || process.env.NEXT_PUBLIC_APP_URL;
+  if (customUrl) {
+    return customUrl.replace(/\/$/, '');
+  }
+  if (process.env.VERCEL_URL) {
+    return `https://${process.env.VERCEL_URL}`;
   }
   const host = request.headers.get('host') || 'localhost:3000';
   const proto = request.headers.get('x-forwarded-proto') || 'http';

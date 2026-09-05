@@ -20,6 +20,62 @@ interface ImageFilePreview {
   previewUrl: string;
 }
 
+// Client-side image compressor: Resizes 10MB mobile phone photos to ~250KB in milliseconds
+// Prevents Vercel 4.5MB Serverless Payload limit ("Request Entity Too Large")
+async function compressImageForUpload(file: File): Promise<Blob> {
+  return new Promise((resolve) => {
+    if (file.type === 'image/svg+xml' || file.size < 150 * 1024) {
+      resolve(file);
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const img = new window.Image();
+      img.onload = () => {
+        const MAX_DIM = 1600;
+        let width = img.width;
+        let height = img.height;
+
+        if (width > height && width > MAX_DIM) {
+          height = Math.round((height * MAX_DIM) / width);
+          width = MAX_DIM;
+        } else if (height > MAX_DIM) {
+          width = Math.round((width * MAX_DIM) / height);
+          height = MAX_DIM;
+        }
+
+        const canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) {
+          resolve(file);
+          return;
+        }
+
+        ctx.drawImage(img, 0, 0, width, height);
+
+        canvas.toBlob(
+          (blob) => {
+            if (blob && blob.size < file.size) {
+              resolve(blob);
+            } else {
+              resolve(file);
+            }
+          },
+          'image/jpeg',
+          0.82
+        );
+      };
+      img.onerror = () => resolve(file);
+      img.src = e.target?.result as string;
+    };
+    reader.onerror = () => resolve(file);
+    reader.readAsDataURL(file);
+  });
+}
+
 export default function ContributorForm() {
   const [name, setName] = useState('');
   const [message, setMessage] = useState('');
@@ -39,7 +95,6 @@ export default function ContributorForm() {
     const val = e.target.value;
     const words = countWords(val);
 
-    // If user tries to paste or type far above 150 words, truncate or warn
     if (words > MAX_WORDS + 20) {
       const wordsArr = val.trim().split(/\s+/);
       const truncated = wordsArr.slice(0, MAX_WORDS).join(' ');
@@ -153,16 +208,30 @@ export default function ContributorForm() {
         formData.append('name', name.trim());
         formData.append('message', message.trim());
 
-        images.forEach((img) => {
-          formData.append('images', img.file);
-        });
+        // Fast in-browser compression to ensure payloads stay under cloud server limits
+        for (const img of images) {
+          const compressedBlob = await compressImageForUpload(img.file);
+          const safeName = img.file.name.replace(/\.[^/.]+$/, '') + '.jpg';
+          formData.append('images', compressedBlob, safeName);
+        }
 
         const res = await fetch('/api/contributions', {
           method: 'POST',
           body: formData,
         });
 
-        const data = await res.json();
+        const responseText = await res.text();
+        let data;
+        try {
+          data = JSON.parse(responseText);
+        } catch {
+          if (res.status === 413 || responseText.toLowerCase().includes('entity too large')) {
+            setError('The total size of the photos is too large for the server. Please select fewer or smaller photos.');
+            return;
+          }
+          setError(`Server error (${res.status}): Please try again.`);
+          return;
+        }
 
         if (!res.ok || !data.success) {
           setError(data.error || 'Failed to submit. Please try again.');
@@ -298,7 +367,7 @@ export default function ContributorForm() {
               ref={fileInputRef}
               type="file"
               multiple
-              accept="image/jpeg,image/png,image/webp,image/jpg"
+              accept="image/jpeg,image/png,image/webp,image/jpg,image/heic,image/heif"
               onChange={(e) => {
                 handleAddFiles(e.target.files);
                 e.target.value = '';
@@ -383,7 +452,7 @@ export default function ContributorForm() {
           {isSubmitting ? (
             <>
               <Loader2 className="w-5 h-5 animate-spin" />
-              <span>Sending your memory...</span>
+              <span>Optimizing &amp; sending memory...</span>
             </>
           ) : (
             <span>Send Contribution 💌</span>

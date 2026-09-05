@@ -55,23 +55,23 @@ export default function PolaroidPhoto({
       return (
         <div
           className={`washi-tape ${getTapeClass()} -top-3.5 left-1/2 -translate-x-1/2 -rotate-1`}
-          style={{ width: '90px' }}
+          style={{ width: '95px' }}
         />
       );
     }
     if (tapePosition === 'top-left' || tapePosition === 'corner-left') {
       return (
         <div
-          className={`washi-tape ${getTapeClass()} -top-3 -left-4 -rotate-45`}
-          style={{ width: '80px' }}
+          className={`washi-tape ${getTapeClass()} -top-3.5 -left-5 -rotate-45`}
+          style={{ width: '85px' }}
         />
       );
     }
     if (tapePosition === 'top-right' || tapePosition === 'corner-right') {
       return (
         <div
-          className={`washi-tape ${getTapeClass()} -top-3 -right-4 rotate-45`}
-          style={{ width: '80px' }}
+          className={`washi-tape ${getTapeClass()} -top-3.5 -right-5 rotate-45`}
+          style={{ width: '85px' }}
         />
       );
     }
@@ -79,12 +79,12 @@ export default function PolaroidPhoto({
       return (
         <>
           <div
-            className={`washi-tape ${getTapeClass()} -top-3 -left-4 -rotate-45`}
-            style={{ width: '75px' }}
+            className={`washi-tape ${getTapeClass()} -top-3.5 -left-5 -rotate-45`}
+            style={{ width: '80px' }}
           />
           <div
-            className={`washi-tape ${getTapeClass()} -bottom-3 -right-4 -rotate-45`}
-            style={{ width: '75px' }}
+            className={`washi-tape ${getTapeClass()} -bottom-3.5 -right-5 -rotate-45`}
+            style={{ width: '80px' }}
           />
         </>
       );
@@ -92,30 +92,34 @@ export default function PolaroidPhoto({
     return (
       <div
         className={`washi-tape ${getTapeClass()} -top-3.5 left-1/2 -translate-x-1/2`}
-        style={{ width: '90px' }}
+        style={{ width: '95px' }}
       />
     );
   };
 
-  // Render pin decoration
+  // Render 3D realistic pin decoration
   const renderPin = () => {
     if (pinStyle === 'gold-pin') {
       return (
-        <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-30 w-5 h-5 rounded-full bg-amber-400 shadow-md border-2 border-amber-600 flex items-center justify-center">
-          <div className="w-1.5 h-1.5 rounded-full bg-amber-200" />
+        <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-40 flex items-center justify-center filter drop-shadow-md">
+          <div className="w-5 h-5 rounded-full bg-gradient-to-br from-amber-200 via-amber-400 to-amber-600 border border-amber-700 shadow-inner flex items-center justify-center">
+            <div className="w-1.5 h-1.5 rounded-full bg-amber-100 shadow" />
+          </div>
         </div>
       );
     }
     if (pinStyle === 'silver-pin') {
       return (
-        <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-30 w-5 h-5 rounded-full bg-stone-300 shadow-md border-2 border-stone-500 flex items-center justify-center">
-          <div className="w-1.5 h-1.5 rounded-full bg-white" />
+        <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-40 flex items-center justify-center filter drop-shadow-md">
+          <div className="w-5 h-5 rounded-full bg-gradient-to-br from-slate-100 via-slate-300 to-slate-500 border border-slate-600 shadow-inner flex items-center justify-center">
+            <div className="w-1.5 h-1.5 rounded-full bg-white shadow" />
+          </div>
         </div>
       );
     }
     if (pinStyle === 'rose-gold-clip') {
       return (
-        <div className="absolute -top-4 right-4 z-30 w-4 h-7 border-2 border-rose-400 rounded-t-full shadow-sm bg-rose-200/40" />
+        <div className="absolute -top-4 right-4 z-40 w-4.5 h-7.5 border-2 border-rose-400 rounded-t-full shadow-md bg-rose-200/50 backdrop-blur-sm" />
       );
     }
     return null;
@@ -141,7 +145,9 @@ export default function PolaroidPhoto({
     <div
       style={desktopStyle}
       className={`group cursor-pointer select-none transition-all duration-300 ${
-        isDesktopLayout ? 'hover:scale-105 hover:!rotate-0' : 'w-full max-w-[280px] mx-auto hover:scale-105'
+        isDesktopLayout
+          ? 'hover:scale-108 hover:!rotate-0 hover:z-50'
+          : 'w-full max-w-[290px] mx-auto hover:scale-105'
       }`}
       onClick={() => onOpenLightbox(imageUrl, caption || `Memory #${index + 1}`)}
     >
@@ -150,32 +156,37 @@ export default function PolaroidPhoto({
         {renderTape()}
         {renderPin()}
 
-        {/* Photo Image Container */}
-        <div className="relative aspect-[4/3] w-full overflow-hidden bg-stone-100 rounded-sm shadow-inner">
+        {/* Photo Image Container with Gloss Sheen */}
+        <div className="relative aspect-[4/3] w-full overflow-hidden bg-stone-100 rounded-[2px] shadow-inner photo-gloss">
           <Image
             src={imageUrl}
             alt={caption || `Memory Photo ${index + 1}`}
             fill
-            sizes="(max-width: 768px) 100vw, 300px"
+            sizes="(max-width: 768px) 100vw, 320px"
             unoptimized
             className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
 
-          {/* Hover Zoom Overlay */}
-          <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-            <div className="w-9 h-9 rounded-full bg-white/90 text-stone-800 flex items-center justify-center shadow-lg transform scale-75 group-hover:scale-100 transition-transform">
-              <ZoomIn className="w-4 h-4" />
+          {/* Hover Zoom Overlay Button */}
+          <div className="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+            <div className="w-10 h-10 rounded-full bg-white text-stone-900 flex items-center justify-center shadow-xl transform scale-75 group-hover:scale-100 transition-transform font-bold">
+              <ZoomIn className="w-5 h-5 text-amber-600" />
             </div>
           </div>
         </div>
 
-        {/* Polaroid Bottom Caption / Number */}
+        {/* Polaroid Bottom Caption & Timestamp */}
         <div className="mt-2.5 flex items-center justify-between px-1">
-          <span className="text-[12px] font-handwritten text-stone-500 tracking-wide">
-            {caption || `Memory #${index + 1}`}
-          </span>
+          <div className="flex flex-col">
+            <span className="text-[13px] font-handwritten text-stone-600 font-bold tracking-wide">
+              {caption || `Memory #${index + 1}`}
+            </span>
+            <span className="text-[8.5px] uppercase tracking-widest text-stone-400 font-mono -mt-0.5">
+              INSTAX • 05/09
+            </span>
+          </div>
           {stickerEmoji && (
-            <span className="text-sm select-none transform group-hover:scale-125 transition-transform">
+            <span className="text-base select-none transform group-hover:scale-125 transition-transform filter drop-shadow-sm">
               {stickerEmoji}
             </span>
           )}

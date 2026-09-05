@@ -14,88 +14,131 @@ body {
   overflow-x: hidden;
 }
 
-/* Scrapbook and Polaroid Custom Styling */
+/* Scrapbook and Aesthetic Background Textures */
 .scrapbook-texture {
-  background-image: radial-gradient(#d3c5b4 1px, transparent 1px),
-    radial-gradient(#d3c5b4 1px, #faf7f2 1px);
-  background-size: 40px 40px;
-  background-position: 0 0, 20px 20px;
+  background-image: 
+    radial-gradient(rgba(180, 150, 115, 0.15) 1.5px, transparent 1.5px),
+    radial-gradient(rgba(140, 100, 60, 0.08) 1px, transparent 1px);
+  background-size: 32px 32px, 16px 16px;
+  background-position: 0 0, 8px 8px;
 }
 
 .scrapbook-dots {
-  background-image: radial-gradient(rgba(219, 39, 119, 0.15) 1.5px, transparent 1.5px);
-  background-size: 24px 24px;
+  background-image: 
+    radial-gradient(rgba(244, 63, 94, 0.18) 1.5px, transparent 1.5px),
+    radial-gradient(rgba(168, 85, 247, 0.12) 1.5px, transparent 1.5px);
+  background-size: 28px 28px, 14px 14px;
+  background-position: 0 0, 14px 14px;
 }
 
 .scrapbook-grid {
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+  background-image: 
+    linear-gradient(to right, rgba(59, 130, 246, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(59, 130, 246, 0.08) 1px, transparent 1px);
   background-size: 24px 24px;
 }
 
 .scrapbook-stars {
-  background-image: radial-gradient(rgba(245, 158, 11, 0.2) 1.5px, transparent 1.5px);
-  background-size: 32px 32px;
+  background-image: 
+    radial-gradient(rgba(245, 158, 11, 0.3) 1.5px, transparent 1.5px),
+    radial-gradient(rgba(234, 179, 8, 0.15) 2px, transparent 2px);
+  background-size: 36px 36px, 18px 18px;
+  background-position: 0 0, 18px 18px;
 }
 
-/* Washi Tape Styles */
+.scrapbook-midnight {
+  background-image: 
+    radial-gradient(rgba(255, 255, 255, 0.4) 1px, transparent 1px),
+    radial-gradient(rgba(236, 72, 153, 0.25) 1.5px, transparent 1.5px),
+    radial-gradient(rgba(168, 85, 247, 0.2) 2px, transparent 2px);
+  background-size: 40px 40px, 80px 80px, 120px 120px;
+  background-position: 0 0, 20px 40px, 60px 80px;
+}
+
+.scrapbook-botanical {
+  background-image: 
+    radial-gradient(rgba(16, 185, 129, 0.15) 1.5px, transparent 1.5px),
+    radial-gradient(rgba(5, 150, 105, 0.1) 1px, transparent 1px);
+  background-size: 30px 30px, 15px 15px;
+}
+
+/* Ultra Realistic Washi Tapes */
 .washi-tape {
   position: absolute;
   height: 28px;
-  width: 110px;
-  z-index: 30;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
-  backdrop-filter: blur(1px);
-  opacity: 0.88;
-  mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+  width: 105px;
+  z-index: 35;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15), inset 0 1px 1px rgba(255,255,255,0.6);
+  backdrop-filter: blur(1.5px);
+  opacity: 0.92;
+  mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
 }
 
 .washi-kraft {
-  background: rgba(216, 194, 157, 0.85);
-  border-top: 1px dashed rgba(160, 130, 95, 0.4);
-  border-bottom: 1px dashed rgba(160, 130, 95, 0.4);
+  background: repeating-linear-gradient(45deg, rgba(222, 198, 160, 0.9), rgba(222, 198, 160, 0.9) 8px, rgba(210, 182, 140, 0.9) 8px, rgba(210, 182, 140, 0.9) 16px);
+  border-top: 1px dashed rgba(140, 105, 65, 0.5);
+  border-bottom: 1px dashed rgba(140, 105, 65, 0.5);
 }
 
 .washi-pink {
-  background: rgba(254, 215, 226, 0.85);
-  border-top: 1px dashed rgba(244, 114, 182, 0.4);
-  border-bottom: 1px dashed rgba(244, 114, 182, 0.4);
+  background: repeating-linear-gradient(45deg, rgba(254, 205, 220, 0.92), rgba(254, 205, 220, 0.92) 8px, rgba(251, 182, 206, 0.92) 8px, rgba(251, 182, 206, 0.92) 16px);
+  border-top: 1px dashed rgba(236, 72, 153, 0.5);
+  border-bottom: 1px dashed rgba(236, 72, 153, 0.5);
 }
 
 .washi-gold {
-  background: rgba(254, 240, 138, 0.85);
-  border-top: 1px dashed rgba(234, 179, 8, 0.4);
-  border-bottom: 1px dashed rgba(234, 179, 8, 0.4);
+  background: linear-gradient(135deg, rgba(254, 240, 138, 0.95), rgba(234, 179, 8, 0.85), rgba(254, 240, 138, 0.95));
+  border-top: 1px solid rgba(180, 83, 9, 0.5);
+  border-bottom: 1px solid rgba(180, 83, 9, 0.5);
+  box-shadow: 0 2px 8px rgba(234, 179, 8, 0.35);
 }
 
 .washi-mint {
-  background: rgba(209, 250, 229, 0.85);
-  border-top: 1px dashed rgba(52, 211, 153, 0.4);
-  border-bottom: 1px dashed rgba(52, 211, 153, 0.4);
+  background: repeating-linear-gradient(45deg, rgba(209, 250, 229, 0.92), rgba(209, 250, 229, 0.92) 8px, rgba(167, 243, 208, 0.92) 8px, rgba(167, 243, 208, 0.92) 16px);
+  border-top: 1px dashed rgba(16, 185, 129, 0.5);
+  border-bottom: 1px dashed rgba(16, 185, 129, 0.5);
 }
 
 .washi-lavender {
-  background: rgba(233, 213, 255, 0.85);
-  border-top: 1px dashed rgba(192, 132, 252, 0.4);
-  border-bottom: 1px dashed rgba(192, 132, 252, 0.4);
+  background: repeating-linear-gradient(45deg, rgba(233, 213, 255, 0.92), rgba(233, 213, 255, 0.92) 8px, rgba(216, 180, 254, 0.92) 8px, rgba(216, 180, 254, 0.92) 16px);
+  border-top: 1px dashed rgba(168, 85, 247, 0.5);
+  border-bottom: 1px dashed rgba(168, 85, 247, 0.5);
 }
 
-/* Polaroid Photo Card */
+/* Realistic 3D Polaroid Card */
 .polaroid-card {
   background: #ffffff;
-  padding: 10px 10px 32px 10px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0,0,0,0.03);
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
-  border-radius: 2px;
+  padding: 10px 10px 30px 10px;
+  box-shadow: 
+    0 10px 25px -5px rgba(0, 0, 0, 0.18),
+    0 8px 10px -6px rgba(0, 0, 0, 0.12),
+    0 0 0 1px rgba(0, 0, 0, 0.05);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease;
+  border-radius: 4px;
 }
 
 .polaroid-card:hover {
-  box-shadow: 0 25px 35px -5px rgba(0, 0, 0, 0.25), 0 15px 15px -5px rgba(0, 0, 0, 0.1);
-  z-index: 40 !important;
+  box-shadow: 
+    0 25px 40px -10px rgba(0, 0, 0, 0.3),
+    0 15px 20px -8px rgba(0, 0, 0, 0.18),
+    0 0 0 1px rgba(0, 0, 0, 0.08);
+  z-index: 45 !important;
 }
 
-/* Vintage Postage Stamp */
+/* Glossy Sheen Overlay on Photos */
+.photo-gloss {
+  position: relative;
+}
+.photo-gloss::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.05) 40%, transparent 60%);
+  pointer-events: none;
+}
+
+/* Vintage Postage Cancellation Stamp */
 .postage-stamp {
   border: 2px dashed #9c8065;
   background: #fdfbf7;
@@ -105,30 +148,43 @@ body {
   text-transform: uppercase;
   letter-spacing: 2px;
   color: #785c43;
-  box-shadow: inset 0 0 8px rgba(160, 130, 95, 0.15), 1px 2px 4px rgba(0,0,0,0.1);
+  box-shadow: inset 0 0 8px rgba(160, 130, 95, 0.2), 1px 3px 6px rgba(0,0,0,0.15);
+  border-radius: 3px;
 }
 
-/* Wax Seal Accent */
+/* 3D Realistic Wax Seal Accent */
 .wax-seal {
-  background: radial-gradient(circle at 35% 35%, #e11d48, #9f1239);
-  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.4), inset 0 -2px 4px rgba(0, 0, 0, 0.5), 0 4px 10px rgba(0,0,0,0.3);
+  background: radial-gradient(circle at 35% 35%, #f43f5e, #be123c 60%, #881337);
+  box-shadow: 
+    inset 0 3px 5px rgba(255, 255, 255, 0.5),
+    inset 0 -3px 6px rgba(0, 0, 0, 0.6),
+    0 6px 15px rgba(0, 0, 0, 0.35);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
+  border: 2px solid rgba(255, 255, 255, 0.15);
 }
 
-/* Subtle Floating Animation */
+.wax-seal-gold {
+  background: radial-gradient(circle at 35% 35%, #fbbf24, #d97706 60%, #92400e);
+  box-shadow: 
+    inset 0 3px 5px rgba(255, 255, 255, 0.6),
+    inset 0 -3px 6px rgba(0, 0, 0, 0.6),
+    0 6px 15px rgba(217, 119, 6, 0.4);
+}
+
+/* Soft Floating Animation */
 @keyframes softFloat {
   0%, 100% {
     transform: translateY(0px) rotate(var(--rot, 0deg));
   }
   50% {
-    transform: translateY(-5px) rotate(var(--rot, 0deg));
+    transform: translateY(-6px) rotate(var(--rot, 0deg));
   }
 }
 
 .floating-element {
-  animation: softFloat 5s ease-in-out infinite;
+  animation: softFloat 6s ease-in-out infinite;
 }
